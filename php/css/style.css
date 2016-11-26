@@ -1,0 +1,23 @@
+body {
+    font-family: ".SFNSText-Regular", "Segoe UI", "Noto Sans", sans-serif;
+    margin: auto;
+    width: 50%;
+    text-align: center;
+}
+
+h1 {
+    /* text-align: center; */
+}
+
+form {
+    /* text-align: center; */
+}
+
+label {
+}
+
+.error {
+}
+
+#errorWords {
+}
