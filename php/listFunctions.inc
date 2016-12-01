@@ -7,7 +7,9 @@ $values = array("personId" => "",
                 "lastName" => "",
                 "age" => "",
                 "curList" => "",
-                "details" => "");
+                "city" => "",
+                "details" => "",
+                "dateUpdated" => "");
 
  function main() {
     // The main function that calls all the other functions.
@@ -18,7 +20,9 @@ $values = array("personId" => "",
          "lastName" => $_POST['lastName'],
          "age" => $_POST['age'],
          "curList" => $_POST['curList'],
-         "details" => $_POST['details']);
+         "city" => $_POST['city'],
+         "details" => $_POST['details'],
+         "dateUpdated" => $_POST['dateUpdated']);
 
     global $errorMessage; 
     global $values;

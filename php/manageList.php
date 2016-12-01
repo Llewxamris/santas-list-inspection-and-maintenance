@@ -32,22 +32,32 @@
         <form action='' method="post">
             <label for="personalId">Personal Identifier: </label> <br />
             <input type="text" name="personId" id="personId" value="<?php echo $values['personId'] ?>"
-                class="<?php if (isset($_POST['submit'])) { echo hasError($values['personId']);} ?>">
+                class="<?php if (isset($_POST['submit'])) { echo hasError($values['personId']);} ?>"
+                   placeholder="e.g. 001" />
             <br /><br />
 
             <label for="firstName">First Name: </label> <br />
             <input type="text" name="firstName" id="firstName" value="<?php echo $values['firstName'] ?>"
-                class="<?php if (isset($_POST['submit'])) { echo hasError($values['firstName']);} ?>">
+                class="<?php if (isset($_POST['submit'])) { echo hasError($values['firstName']);} ?>"
+                   placeholder="e.g. Taylor" />
             <br /><br />
 
             <label for="lastName">Last Name: </label> <br />
             <input type="text" name="lastName" id="lastName" value="<?php echo $values['lastName'] ?>"
-                class="<?php if (isset($_POST['submit'])) { echo hasError($values['lastName']);} ?>">
+                class="<?php if (isset($_POST['submit'])) { echo hasError($values['lastName']);} ?>"
+                   placeholder="e.g. Smith"/>
             <br /><br />
 
             <label for="age">Age: </label> <br />
             <input type="text" name="age" id="age" value="<?php echo $values['age'] ?>" maxlength="2"
-                class="<?php if (isset($_POST['submit'])) { echo hasError($values['age']); } ?>">
+                class="<?php if (isset($_POST['submit'])) { echo hasError($values['age']); } ?>"
+                   placeholder="e.g. 12" />
+            <br /><br />
+
+            <label for="city">City: </label> <br />
+            <input type="text" name="city" id="city" value="<?php echo $values['city'] ?>"
+                   class="<?php if (isset($_POST['submit'])) { echo hasError($values['city']); } ?>"
+                    placeholder="e.g. Ottawa"/>
             <br /><br />
 
             <label for="curList">Current List: </label> <br />
@@ -60,9 +70,11 @@
             <br /><br />
 
             <label for="details">Details: </label> <br />
-            <textarea name="details" id="details" rows="8" cols="40" spellcheck="true" maxlength="500"></textarea>
+            <textarea name="details" id="details" rows="8" cols="40" spellcheck="true" maxlength="500"
+                      placeholder="Enter relevant details here: "></textarea>
             <br /><br />
-            <input type="submit" name="submit" id="submit" value="Add Child">
+
+            <input type="submit" name="submit" id="submit" value="Add Person">
         </form>
         <?php
             } else {
