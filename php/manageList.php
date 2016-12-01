@@ -13,13 +13,14 @@
     <!-- <h2>Your almost ready to use our fabulous product, just fill out this form!</h2> -->
     <hr />
     <?php
+        $success = false;
         include './listFunctions.inc';
         if (isset($_POST['submit'])) {
         // Run the following if the form has previously been submitted
-        $success = main();
-        echo "<div id=\"errorWords\" style=\"display: hidden\">";
-        echo $errorMessage;
-        echo "</div>";
+            $success = main();
+            echo "<div id=\"errorWords\" style=\"display: hidden\">";
+            echo $errorMessage;
+            echo "</div>";
         }
             
         if(!$success) {

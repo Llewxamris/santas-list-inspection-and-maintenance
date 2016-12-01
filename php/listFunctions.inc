@@ -2,16 +2,24 @@
 // errorMessage is set to empty string to start.
 $errorMessage = '';
 // An associative array of all of the fields on the page and their data.
-$values = array("personalId" => $_POST['personalId'],
-                "firstName" => $_POST['firstName'],
-                "lastName" => $_POST['lastName'],
-                "age" => $_POST['age'],
-                "curList" => $_POST['curList'],
-                "details" => $_POST['details']);
+$values = array("personId" => "",
+                "firstName" => "",
+                "lastName" => "",
+                "age" => "",
+                "curList" => "",
+                "details" => "");
 
  function main() {
     // The main function that calls all the other functions.
     // Returns TRUE if no errors are found, and FALSE if errors are found.
+     global $values;
+     $values = array("personId" => $_POST['personId'],
+         "firstName" => $_POST['firstName'],
+         "lastName" => $_POST['lastName'],
+         "age" => $_POST['age'],
+         "curList" => $_POST['curList'],
+         "details" => $_POST['details']);
+
     global $errorMessage; 
     global $values;
     $success = TRUE;
