@@ -1,0 +1,22 @@
+{
+    "person": [
+        {
+            "-id": "1",
+            "lastName": "Haley",
+            "firstName": "Max",
+            "age": "21",
+            "currList": "G",
+            "details": "",
+            "dateUpdated": "111111"
+        },
+        {
+            "-id": "2",
+            "lastName": "Yaleh",
+            "firstName": "Xam",
+            "age": "12",
+            "currList": "N",
+            "details": "",
+            "dateUpdated": "111111"
+        }
+    ]
+}
