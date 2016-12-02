@@ -21,8 +21,7 @@ $values = array("personId" => "",
          "age" => $_POST['age'],
          "curList" => $_POST['curList'],
          "city" => $_POST['city'],
-         "details" => $_POST['details'],
-         "dateUpdated" => $_POST['dateUpdated']);
+         "details" => $_POST['details']);
 
     global $errorMessage; 
     global $values;
@@ -34,7 +33,7 @@ $values = array("personId" => "",
         $values[$key] = trim($input);
     } 
 
-    if(validateExists($values['personalId']) == FALSE) {
+    if(validateExists($values['personId']) == FALSE) {
         $errorMessage .= "Personal Identification  is empty. $errorEnding";
         $values['personalId'] = "";
         $success = FALSE;
@@ -58,7 +57,13 @@ $values = array("personId" => "",
         $values['age'] = "";
     }
 
-    if ($success) {
+     if(validateExists($values['city']) == FALSE) {
+         $errorMessage .= "City is empty." . $errorEnding;
+         $success = FALSE;
+         $values['city'] = "";
+     }
+
+     if ($success) {
         writeToFile();
         return $success; 
     } else {
@@ -89,12 +94,76 @@ function hasError($data) {
 function writeToFile() {
     // Writes everything in the array $values to the file accounts.txt
     global $values;
-    $textToFile = "";
-    foreach ($values as $key => $input) {
-        if($key != "confirmPass") {
-            $textToFile .= $input . "~";
+    $fileName = './List/SantaList.json';
+    $jsonArray = array();
+
+    $currPerson = array (     '-id'  => trim($_POST['personId']),
+                        'firstName'  => $_POST['firstName'],
+                         'lastName'  => $_POST['lastName'],
+                              'age'  => $_POST['age'],
+                             'city'  => $_POST['city'],
+                          'curList'  => $_POST['curList'],
+                          'details'  => $_POST['details'],
+                      'dateUpdated'  => date('dd \- mm -\ Y'));
+
+    $jsonFile = file_get_contents($fileName);
+
+    $jsonArray = json_decode($jsonFile, true);
+
+    array_push($jsonArray['person'][trim($_POST['personId']) - 1], $currPerson);
+
+    $jsonFile = json_encode($jsonArray, JSON_PRETTY_PRINT);
+
+    file_put_contents($fileName, $jsonFile);
+}
+
+function getIDs() {
+    $idFile = file('./List/idList.txt');
+    $lastID = "";
+
+    foreach ($idFile as $num) {
+        $lastID  = $num;
+        echo "<option name='$num' value='$num''>$num</option>";
+    }
+    $lastID = $lastID + 1;
+    echo "<option name='$lastID' value='$lastID' selected>$lastID</option>";
+
+}
+
+function fillForms() {
+    global $values;
+    $fileName = './List/SantaList.json';
+    $jsonFile = file_get_contents($fileName);
+    $jsonArray = json_decode($jsonFile, true);
+    $found = FALSE;
+
+    foreach ($jsonArray['person'] as $value)
+    {
+        if ($value['-id'] == trim($_POST['personId'])) {
+            $values = array("personId"  => trim($_POST['personId']),
+                            "firstName" => $value['firstName'],
+                            "lastName"  => $value['lastName'],
+                            "age"       => $value['age'],
+                            "curList"   => $value['curList'],
+                            "city"      => $value['city'],
+                            "details"   => $value['details']);
         }
     }
-    $textToFile .= "\r\n";
-    file_put_contents("./accounts.txt", $textToFile, FILE_APPEND);
+
+//    foreach ($jsonArray as $key => $value) {
+//        foreach ($value as $key2 => $value2) {
+//            if ($key2 == $_POST['personId']) {
+//                $values = array("personId"  => $_POST['personId'],
+//                                "firstName" => $value['firstName'],
+//                                "lastName"  => $value['lastName'],
+//                                "age"       => $value['age'],
+//                                "curList"   => $value['curList'],
+//                                "city"      => $value['city'],
+//                                "details"   => $value['details']);
+//                var_dump($values);
+//                $found = TRUE;
+//            }
+//        }
+//    }
+    return $found;
 }

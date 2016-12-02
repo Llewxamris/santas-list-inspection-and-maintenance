@@ -21,6 +21,9 @@
             echo "<div id=\"errorWords\" style=\"display: hidden\">";
             echo $errorMessage;
             echo "</div>";
+        } else if (isset($_POST['update'])) {
+            echo "<div>Updated</div>";
+            fillForms();
         }
             
         if(!$success) {
@@ -30,10 +33,11 @@
         <!-- Values is set to the users input if the input was valid, and '' if it was not.
                  If it retuned as '', set the class to error.  -->
         <form action='' method="post">
-            <label for="personalId">Personal Identifier: </label> <br />
-            <input type="text" name="personId" id="personId" value="<?php echo $values['personId'] ?>"
-                class="<?php if (isset($_POST['submit'])) { echo hasError($values['personId']);} ?>"
-                   placeholder="e.g. 001" />
+            <label for="personId">Personal Identifier: </label> <br />
+                <select name="personId" id="personId">
+                    <?php getIDs() ?>
+                </select>
+            <input type="submit" id="update" name="update"  value="Update"/>
             <br /><br />
 
             <label for="firstName">First Name: </label> <br />
