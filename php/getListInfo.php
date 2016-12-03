@@ -14,20 +14,15 @@ $json_file = json_decode($json_string, true); // Decode the JSON file
 $return_json = '{ "person": ['; // Opening JSON tags, and "person" array key
 
 foreach ($json_file['person'] as $value) {
-    // For each key in the person array:
+    // For each key in the person array...
     if ($value['currList'] == $list) {
-        // If the currList value matches the list, add it's content into the
-        // return_json string.
-        // REFACTOR: This big append strings could be replaced with another
-        // foreach loop.
+        // ...if the value for the key "currList" is $list
         $return_json .= "{";
-        $return_json .= "\"-id\": \"" .  $value['-id'] . "\",";
-        $return_json .= "\"lastName\": \"" .  $value['lastName'] . "\",";
-        $return_json .= "\"firstName\": \"" .  $value['firstName'] . "\",";
-        $return_json .= "\"age\": \"" .  $value['age'] . "\",";
-        $return_json .= "\"currList\": \"" .  $value['currList'] . "\",";
-        $return_json .= "\"details\": \"" .  $value['details'] . "\",";
-        $return_json .= "\"dateUpdated\": \"" .  $value['dateUpdated'] . "\"";
+        foreach ($value as $input => $output) {
+            // ...then for each key:value pair in the array, add the
+            // key:value pair to $return_json
+            $return_json .= "\"$input\": \"" . $output  . "\",";
+        }
         $return_json .= "},";
     }
 }
