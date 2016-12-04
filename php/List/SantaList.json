@@ -5,6 +5,7 @@
             "lastName": "Haley",
             "firstName": "Max",
             "age": "21",
+            "city": "Aylmer",
             "currList": "G",
             "details": "",
             "dateUpdated": "111111"
@@ -14,9 +15,11 @@
             "lastName": "Yaleh",
             "firstName": "Xam",
             "age": "12",
+            "city": "Ottawa",
             "currList": "N",
             "details": "",
             "dateUpdated": "111111"
-        }
+        },
+        null
     ]
 }
