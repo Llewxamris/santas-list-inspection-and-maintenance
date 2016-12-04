@@ -110,7 +110,7 @@ function writeToFile() {
 
     $jsonArray = json_decode($jsonFile, true);
 
-    array_push($jsonArray['person'][trim($_POST['personId']) - 1], $currPerson);
+    array_push($jsonArray['person'], $currPerson);
 
     $jsonFile = json_encode($jsonArray, JSON_PRETTY_PRINT);
 
@@ -144,7 +144,7 @@ function fillForms() {
                             "firstName" => $value['firstName'],
                             "lastName"  => $value['lastName'],
                             "age"       => $value['age'],
-                            "currList"  => $value['currList'],
+                            "curList"  => $value['curList'],
                             "city"      => $value['city'],
                             "details"   => $value['details']);
         }
