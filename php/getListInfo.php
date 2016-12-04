@@ -15,8 +15,8 @@ $return_json = '{ "person": ['; // Opening JSON tags, and "person" array key
 
 foreach ($json_file['person'] as $value) {
     // For each key in the person array...
-    if ($value['currList'] == $list) {
-        // ...if the value for the key "currList" is $list
+    if ($value['curList'] == $list) {
+        // ...if the value for the key "crrList" is $list
         $return_json .= "{";
         foreach ($value as $input => $output) {
             // ...then for each key:value pair in the array, add the
