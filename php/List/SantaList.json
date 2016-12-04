@@ -6,7 +6,7 @@
             "firstName": "Max",
             "age": "21",
             "city": "Aylmer",
-            "currList": "G",
+            "curList": "G",
             "details": "",
             "dateUpdated": "111111"
         },
@@ -16,10 +16,29 @@
             "firstName": "Xam",
             "age": "12",
             "city": "Ottawa",
-            "currList": "N",
+            "curList": "N",
             "details": "",
             "dateUpdated": "111111"
         },
-        null
+        {
+            "-id": "3",
+            "firstName": "John",
+            "lastName": "Doe",
+            "age": "53",
+            "city": "London",
+            "curList": "L",
+            "details": "",
+            "dateUpdated": "0404 - 1212 - 2016"
+        },
+        {
+            "-id": "4",
+            "firstName": "Dwayne",
+            "lastName": "Johnson",
+            "age": "45",
+            "city": "The Square",
+            "curList": "U",
+            "details": "Like a Rock.",
+            "dateUpdated": "0404 - 1212 - 2016"
+        }
     ]
 }
