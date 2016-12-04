@@ -2,31 +2,36 @@
 // errorMessage is set to empty string to start.
 $errorMessage = '';
 // An associative array of all of the fields on the page and their data.
-$values = array("personId" => "",
-                "firstName" => "",
-                "lastName" => "",
-                "age" => "",
-                "curList" => "",
-                "city" => "",
-                "details" => "",
-                "dateUpdated" => "");
+$values = array(
+                "personId"      => "",
+                "firstName"     => "",
+                "lastName"      => "",
+                "age"           => "",
+                "curList"       => "",
+                "city"          => "",
+                "details"       => "",
+                "dateUpdated"   => "" 
+               );
 
  function main() {
     // The main function that calls all the other functions.
     // Returns TRUE if no errors are found, and FALSE if errors are found.
-     global $values;
-     $values = array("personId" => $_POST['personId'],
-         "firstName" => $_POST['firstName'],
-         "lastName" => $_POST['lastName'],
-         "age" => $_POST['age'],
-         "curList" => $_POST['curList'],
-         "city" => $_POST['city'],
-         "details" => $_POST['details']);
-
+    global $values;
     global $errorMessage; 
     global $values;
+
+    $values = array(
+                    "personId"  => $_POST['personId'],
+                    "firstName" => $_POST['firstName'],
+                    "lastName"  => $_POST['lastName'],
+                    "age"       => $_POST['age'],
+                    "curList"   => $_POST['curList'],
+                    "city"      => $_POST['city'],
+                    "details"   => $_POST['details']
+                    );
+
     $success = TRUE;
-    $errorEnding = " Please enter a proper value" . "<br>";
+    $errorEnding = ' Please enter a proper value' . '<br />';
     
     foreach($values as $key => $input) {
         // Trims each value
@@ -94,6 +99,7 @@ function hasError($data) {
 function writeToFile() {
     // Writes everything in the array $values to the file accounts.txt
     global $values;
+    $foundReplace = false;
     $fileName = './List/SantaList.json';
     $jsonArray = array();
 
@@ -109,6 +115,33 @@ function writeToFile() {
     $jsonFile = file_get_contents($fileName);
 
     $jsonArray = json_decode($jsonFile, true);
+
+    // foreach ($jsonArray['person'] as $key) {
+    //     var_dump($key);
+    //     if ($key['-id'] === $currPerson['-id']) {
+    //         echo '<br />';
+    //         echo '<br />';
+    //         var_dump($key['-id']);
+    //         foreach ($key as $input => $output) {
+    //             echo '<br />';
+    //             echo '<br />';
+    //             var_dump($jsonArray['person'][$input]);
+    //             $jsonArray['person'][$input] = $currPerson[$input];
+    //             var_dump($jsonArray['person'][$input]);
+    //         }
+    //         $foundReplace = true;
+    //     }
+    // }
+    //
+    // if ($foundReplace === false) {
+    //     array_push($jsonArray['person'], $currPerson);
+    //     echo 'New Person Added';
+    // }
+    //
+    // echo '<br />';
+    // echo '<br />';
+    //
+    // var_dump($jsonArray);
 
     array_push($jsonArray['person'], $currPerson);
 
@@ -144,26 +177,10 @@ function fillForms() {
                             "firstName" => $value['firstName'],
                             "lastName"  => $value['lastName'],
                             "age"       => $value['age'],
-                            "curList"  => $value['curList'],
+                            "curList"   => $value['curList'],
                             "city"      => $value['city'],
                             "details"   => $value['details']);
         }
     }
-
-//    foreach ($jsonArray as $key => $value) {
-//        foreach ($value as $key2 => $value2) {
-//            if ($key2 == $_POST['personId']) {
-//                $values = array("personId"  => $_POST['personId'],
-//                                "firstName" => $value['firstName'],
-//                                "lastName"  => $value['lastName'],
-//                                "age"       => $value['age'],
-//                                "curList"   => $value['curList'],
-//                                "city"      => $value['city'],
-//                                "details"   => $value['details']);
-//                var_dump($values);
-//                $found = TRUE;
-//            }
-//        }
-//    }
     return $found;
 }
