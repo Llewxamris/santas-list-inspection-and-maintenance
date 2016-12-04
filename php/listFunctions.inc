@@ -144,7 +144,7 @@ function fillForms() {
                             "firstName" => $value['firstName'],
                             "lastName"  => $value['lastName'],
                             "age"       => $value['age'],
-                            "curList"   => $value['curList'],
+                            "currList"  => $value['currList'],
                             "city"      => $value['city'],
                             "details"   => $value['details']);
         }
