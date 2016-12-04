@@ -11,20 +11,23 @@ $json_string = file_get_contents(FILE_NAME)
 
 $json_file = json_decode($json_string, true); // Decode the JSON file
 
-$return_html = "";
+$return_json = '{ "person": [';
 
 foreach ($json_file['person'] as $value) {
     // For each key in the person array...
     if ($value['-id'] == $id) {
         // ...if the value for the key "-id" is $id...
+        $return_json .= '{';
         foreach ($value as $input => $output) {
             // ...then for each key:value pair in the array, echo out
             // the key:value as HTML.
-           $return_html .= "<p>$input: $output</p>"; 
+           $return_json .= "\"$input\": \"" . $output . "\""; 
         }
     }
 }
 
-header("Content-Type: text/html");
-header("Content-Length: " . strlen($return_html));
-echo $return_html;
+$return_json .= ']}';
+
+header("Content-Type: application/json");
+header("Content-Length: " . strlen($return_json));
+echo $return_json;
