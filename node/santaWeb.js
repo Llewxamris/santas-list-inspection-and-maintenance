@@ -22,7 +22,6 @@ HTTP.createServer(function(req, res) {
     let fileLocation = URL.parse(req.url).pathname;
     let fileExtention = PATH.extname(fileLocation).slice(1);
     let contentType = getContentType(fileExtention);
-    console.log(contentType);
 
     // Log important information for each request made to the server.
     console.log(CHALK.yellow('Request made:\n'));
@@ -122,6 +121,8 @@ function getContentType(ext) {
         "gif"   : "image/gif",
         "pdf"   : "application/pdf",
         "xml"   : "text/xml",
+        "ico"   : "image/x-icon",
+        "svg"   : "image/svg+xml"
     };
 
     for (let key in extentions) {
