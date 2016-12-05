@@ -1,0 +1,25 @@
+body {
+    background-color: #E7E8E7;
+}
+
+#wrapper {
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+
+h1 {
+    font-size: 15em;
+}
+
+h2 {
+    font-size: 5em;
+}
+
+#notice {
+    font-size: .8em;
+}
+
+#mobReturn {
+    font-size: 3em;
+}
