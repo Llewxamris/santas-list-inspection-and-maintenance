@@ -14,6 +14,7 @@ const PATH      = require('path');
 const QS        = require('querystring');
 const CHALK     = require('chalk');
 const REQUEST   = require('request');
+
 //Create listen server on port PORT
 HTTP.createServer(function(req, res) {
     // Get file directory structure, file extention, and
@@ -102,7 +103,8 @@ function getFile(localPath, res) {
             res.writeHead(404, {
                 'Content-Type': 'text/html'
             });
-            res.end("<h1>404 - FILE NOT FOUND</h1>");
+            // res.end(ERRROOT + '404.html');
+            getFile(PATH.join(__dirname, WEBROOT, '404.html'), res);
         }
     });
 }
