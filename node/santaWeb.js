@@ -19,8 +19,9 @@ HTTP.createServer(function(req, res) {
     // Get file directory structure, file extention, and
     // the content type.
     let fileLocation = URL.parse(req.url).pathname;
-    let fileExtention = PATH.extnamily;
+    let fileExtention = PATH.extname(fileLocation).slice(1);
     let contentType = getContentType(fileExtention);
+    console.log(contentType);
 
     // Log important information for each request made to the server.
     console.log(CHALK.yellow('Request made:\n'));
@@ -30,7 +31,9 @@ HTTP.createServer(function(req, res) {
 
     // Deal with request for favicon.ico by ending the request
     if (req.url === 'favicon.ico') {
-        res.writeHead(200, { "Content-Type": "image/ico" });
+        res.writeHead(200, {
+            "Content-Type": "image/ico"
+        });
         console.log(CHALK.green('   Favicon request handled'));
         res.end();
     }
@@ -39,21 +42,27 @@ HTTP.createServer(function(req, res) {
         // Sends the user to the default landing page when they hit
         // port 9000 with no additional information..
         getFile(PATH.join(__dirname, WEBROOT, 'index.html'), res);
-        res.writeHead(200, { "Content-Type": "text/html" });
+        res.writeHead(200, {
+            "Content-Type": "text/html"
+        });
     } else {
         // If the user has specified a page to navigate too...
         if (contentType === "unknown") {
             // If the requested file is not handled by the server,
             // serve the user a 415 error page.
             console.log(CHALK.red('   ERROR: 415 Unsupported Media Type\n    Ending user connection.'));
-            res.writeHead(415, { 'Content-Type': 'text/html' });
+            res.writeHead(415, {
+                'Content-Type': 'text/html'
+            });
             res.end("<h1>415 - UNSUPPORTED MEDIA TYPE</h1>");
         } else {
             // If the requested file is a handleable type, attempt
             // to open and return the file.
             // If the user has requested a file in bin/
             getFile(PATH.join(__dirname, WEBROOT, fileLocation), res);
-            res.writeHead(200, { "Content-Type": contentType });
+            res.writeHead(200, {
+                "Content-Type": contentType
+            });
         }
     }
 }).listen(PORT);
@@ -78,14 +87,21 @@ function getFile(localPath, res) {
                     // If file can be accessed, but not read, serve
                     // to the user a 500 error page, as error must
                     // be on the servers end, not theirs.
-                    console.log(CHALK.red(`   ${err.code} Cannot retrieve file at: ${localPath}\n`));
-                    res.writeHead(500, { "Content-Type": "text/html" });
+                    console.log(
+                        CHALK.red(
+                            `   ${err.code} Cannot retrieve file at: 
+                                    ${localPath}\n`));
+                    res.writeHead(500, {
+                        "Content-Type": "text/html"
+                    });
                     res.end("<h1>500 - INTERNAL SERVER ERROR</h1>");
                 }
             });
         } else {
             console.log(CHALK.red(`   ${err.code} Cannot retrieve file at: ${localPath}\n`));
-            res.writeHead(404, {'Content-Type':'text/html'});
+            res.writeHead(404, {
+                'Content-Type': 'text/html'
+            });
             res.end("<h1>404 - FILE NOT FOUND</h1>");
         }
     });
@@ -96,6 +112,7 @@ function getFile(localPath, res) {
 function getContentType(ext) {
     let extentions = {
         "html"  : "text/html",
+        "htm"   : "text/html",
         "css"   : "text/css",
         "js"    : "text/js",
         "png"   : "image/png",
