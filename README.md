@@ -22,8 +22,11 @@ good girls and boys.
 
 # Dependencies
 Node.js server requires Chalk v.1.1.3, and Request 2.79.0. Newer versions may
-cause issues with the server. Run `npm install` inside `node/` to install`
+cause issues with the server. Run `npm install` inside `node/` to install
 dependencies automatically.
+
+Web pages included rely on Bootstrap and jQuery. Both are brought in via CDN
+with SRI to verify the resources have not been tampered with.
 
 # License
 Licensed under the GNU GENERAL PUBLIC LICENSE 3.0. Please see the LICENSE file
