@@ -55,7 +55,7 @@ HTTP.createServer(function(req, res) {
             res.writeHead(415, {
                 'Content-Type': 'text/html'
             });
-            res.end("<h1>415 - UNSUPPORTED MEDIA TYPE</h1>");
+            getFile(PATH.join(__dirname, WEBROOT, '415.html'), res);
         } else {
             // If the requested file is a handleable type, attempt
             // to open and return the file.
@@ -95,7 +95,7 @@ function getFile(localPath, res) {
                     res.writeHead(500, {
                         "Content-Type": "text/html"
                     });
-                    res.end("<h1>500 - INTERNAL SERVER ERROR</h1>");
+                    getFile(PATH.join(__dirname, WEBROOT, '500.html'), res);
                 }
             });
         } else {
@@ -103,7 +103,6 @@ function getFile(localPath, res) {
             res.writeHead(404, {
                 'Content-Type': 'text/html'
             });
-            // res.end(ERRROOT + '404.html');
             getFile(PATH.join(__dirname, WEBROOT, '404.html'), res);
         }
     });
