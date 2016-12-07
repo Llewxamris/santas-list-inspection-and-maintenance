@@ -22,6 +22,7 @@ HTTP.createServer(function(req, res) {
     let fileLocation = URL.parse(req.url).pathname;
     let fileExtention = PATH.extname(fileLocation).slice(1);
     let contentType = getContentType(fileExtention);
+    let querystring = URL.parse(req.url, true).search;
 
     // Log important information for each request made to the server.
     console.log(CHALK.yellow('Request made:\n'));
@@ -29,40 +30,60 @@ HTTP.createServer(function(req, res) {
     console.log(CHALK.yellow(`   File Extentions: ${fileExtention}`));
     console.log(CHALK.yellow(`   Content Type: ${contentType}`));
 
-    // Deal with request for favicon.ico by ending the request
-    if (req.url === 'favicon.ico') {
-        res.writeHead(200, {
-            "Content-Type": "image/ico"
-        });
-        console.log(CHALK.green('   Favicon request handled'));
-        res.end();
-    }
+    if (querystring.match(/which/))
+    {
+        let qsObject = URL.parse(req.url, true).query.which;
+        let options  = { 
+            url     : 'http://csdev.cegep-heritage.qc.ca/students/1240428/mHaley_C30_A04/php/getListInfo.php',
+            method  : 'GET',
+            qs      : {
+                "which" : qsObject
+            }
+        }
+        REQUEST(options,(err, resp, data) => {
+            if (!err && res.statusCode == 200) {
 
-    if (req.url === '/') {
-        // Sends the user to the default landing page when they hit
-        // port 9000 with no additional information..
-        getFile(PATH.join(__dirname, WEBROOT, 'index.html'), res);
-        res.writeHead(200, {
-            "Content-Type": "text/html"
+                res.end(data);
+            } else {
+                 console.log('Error');
+            }
         });
     } else {
-        // If the user has specified a page to navigate too...
-        if (contentType === "unknown") {
-            // If the requested file is not handled by the server,
-            // serve the user a 415 error page.
-            console.log(CHALK.red('   ERROR: 415 Unsupported Media Type\n    Ending user connection.'));
-            res.writeHead(415, {
-                'Content-Type': 'text/html'
-            });
-            getFile(PATH.join(__dirname, WEBROOT, '415.html'), res);
-        } else {
-            // If the requested file is a handleable type, attempt
-            // to open and return the file.
-            // If the user has requested a file in bin/
-            getFile(PATH.join(__dirname, WEBROOT, fileLocation), res);
+        // Deal with request for favicon.ico by ending the request
+        if (req.url === 'favicon.ico') {
             res.writeHead(200, {
-                "Content-Type": contentType
+                "Content-Type": "image/ico"
             });
+            console.log(CHALK.green('   Favicon request handled'));
+            getFile(PATH.join(__dirname, WEBROOT, 'favicon.ico'), res);
+        }
+
+        if (req.url === '/') {
+            // Sends the user to the default landing page when they hit
+            // port 9000 with no additional information..
+            getFile(PATH.join(__dirname, WEBROOT, 'index.html'), res);
+            res.writeHead(200, {
+                "Content-Type": "text/html"
+            });
+        } else {
+            // If the user has specified a page to navigate too...
+            if (contentType === "unknown") {
+                // If the requested file is not handled by the server,
+                // serve the user a 415 error page.
+                console.log(CHALK.red('   ERROR: 415 Unsupported Media Type\n    Ending user connection.'));
+                res.writeHead(415, {
+                    'Content-Type': 'text/html'
+                });
+                getFile(PATH.join(__dirname, WEBROOT, '415.html'), res);
+            } else {
+                // If the requested file is a handleable type, attempt
+                // to open and return the file.
+                // If the user has requested a file in bin/
+                getFile(PATH.join(__dirname, WEBROOT, fileLocation), res);
+                res.writeHead(200, {
+                    "Content-Type": contentType
+                });
+            }
         }
     }
 }).listen(PORT);
@@ -122,7 +143,8 @@ function getContentType(ext) {
         "pdf"   : "application/pdf",
         "xml"   : "text/xml",
         "ico"   : "image/x-icon",
-        "svg"   : "image/svg+xml"
+        "svg"   : "image/svg+xml",
+        "json"  : "application/json"
     };
 
     for (let key in extentions) {
