@@ -39,6 +39,16 @@
             "curList": "U",
             "details": "Like a Rock.",
             "dateUpdated": "0404 - 1212 - 2016"
+        },
+        {
+            "-id": "5",
+            "firstName": "Troy",
+            "lastName": "McLean",
+            "age": "20",
+            "city": "Ottawa",
+            "curList": "G",
+            "details": "Cutiest boy in the relm",
+            "dateUpdated": "Please Fix This"
         }
     ]
 }
