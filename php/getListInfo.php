@@ -23,6 +23,7 @@ foreach ($json_file['person'] as $value) {
             // key:value pair to $return_json
             $return_json .= "\"$input\": \"" . $output  . "\",";
         }
+        $return_json = rtrim($return_json, ","); // Remove the trailing comma
         $return_json .= "},";
     }
 }
