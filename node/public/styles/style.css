@@ -1,4 +1,8 @@
+body {
+    background-image: url("../images/shattered.png");
+}
+
 .person {
-    width: 50%;
-    margin: auto;
+    border: 1px solid black;
+    padding-bottom: 10px;
 }
