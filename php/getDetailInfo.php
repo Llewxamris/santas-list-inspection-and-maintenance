@@ -21,12 +21,12 @@ foreach ($json_file['person'] as $value) {
         foreach ($value as $input => $output) {
             // ...then for each key:value pair in the array, echo out
             // the key:value as HTML.
-           $return_json .= "\"$input\": \"" . $output . "\""; 
+           $return_json .= "\"$input\": \"" . $output . "\","; 
         }
     }
 }
-
-$return_json .= ']}';
+$return_json = rtrim($return_json, ',');
+$return_json .= '}]}';
 
 header("Content-Type: application/json");
 header("Content-Length: " . strlen($return_json));
