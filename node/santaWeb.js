@@ -30,8 +30,7 @@ HTTP.createServer(function(req, res) {
     console.log(CHALK.yellow(`   File Extentions: ${fileExtention}`));
     console.log(CHALK.yellow(`   Content Type: ${contentType}`));
 
-    if (querystring.match(/which/))
-    {
+    if (querystring.match(/which/)) {
         let qsObject = URL.parse(req.url, true).query.which;
         let options  = { 
             url     : 'http://csdev.cegep-heritage.qc.ca/students/1240428/mHaley_C30_A04/php/getListInfo.php',
@@ -39,13 +38,30 @@ HTTP.createServer(function(req, res) {
             qs      : {
                 "which" : qsObject
             }
-        }
+        };
         REQUEST(options,(err, resp, data) => {
             if (!err && res.statusCode == 200) {
 
                 res.end(data);
             } else {
                  console.log('Error');
+            }
+        });
+    } else if(querystring.match(/id/)) {
+        let qsObject = URL.parse(req.url, true).query.id;
+        let options  = {
+            url     : 'http://csdev.cegep-heritage.qc.ca/students/1240428/mHaley_C30_A04/php/getDetailInfo.php',
+            method  : 'GET',
+            qs      : {
+                "id" : qsObject
+            }
+        };
+
+        REQUEST(options, (err, resp, data) => {
+            if (!err && res.statusCode === 200) {
+                res.end(data);
+            } else {
+                console.log('Error');
             }
         });
     } else {
