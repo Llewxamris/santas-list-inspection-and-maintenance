@@ -44,11 +44,11 @@
             "-id": "5",
             "firstName": "Troy",
             "lastName": "McLean",
-            "age": "20",
+            "age": "15",
             "city": "Ottawa",
             "curList": "G",
-            "details": "Cutiest boy in the relm",
-            "dateUpdated": "Please Fix This"
+            "details": "",
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "6",

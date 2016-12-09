@@ -38,8 +38,10 @@
 <form action='' method="post">
 
     <label for="personId">Personal Identifier: </label> <br />
-    <select name="personId" id="personId"> <?php getIDs() ?></select>
-    <input type="submit" id="update" name="update"  value="Update"/>
+    <input type="text" name="personId" id="personId" value="<?php echo $values['personId'] ?>"
+        class="<?php if (isset($_POST['submit'])) { echo hasError($values['personId']);} ?>"
+            placeholder="Leave blank for new person ID" />
+    <input type="submit" id="update" name="update"  value="Get Info"/>
     <br /><br />
 
     <label for="firstName">First Name: </label> <br />

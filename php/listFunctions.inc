@@ -79,10 +79,10 @@ $values = array(
 
 function validateExists($data) {
     // Makes sure the data is not empty.
-    if($data != '') {
-        return TRUE;
+    if ($data != '') {
+        return true;
     } else {
-        return FALSE;
+        return false;
     }
 }
 
@@ -119,38 +119,24 @@ function writeToFile() {
     if ($currPerson['-id'] === '') {
         $currPerson['-id'] = getNewNumber();
         addOneToIdList();
-    } 
-    //     var_dump($key);
-    //     if ($key['-id'] === $currPerson['-id']) {
-    //         echo '<br />';
-    //         echo '<br />';
-    //         var_dump($key['-id']);
-    //         foreach ($key as $input => $output) {
-    //             echo '<br />';
-    //             echo '<br />';
-    //             var_dump($jsonArray['person'][$input]);
-    //             $jsonArray['person'][$input] = $currPerson[$input];
-    //             var_dump($jsonArray['person'][$input]);
-    //         }
-    //         $foundReplace = true;
-    //     }
-    // }
-    //
-    // if ($foundReplace === false) {
-    //     array_push($jsonArray['person'], $currPerson);
-    //     echo 'New Person Added';
-    // }
-    //
-    // echo '<br />';
-    // echo '<br />';
-    //
-    // var_dump($jsonArray);
+        array_push($jsonArray['person'], $currPerson);
+    } else { 
+        foreach ($jsonArray['person'] as &$key) {
+            if ($key['-id'] === $currPerson['-id']) {
+                foreach ($key as $input => &$output) {
+                    $output = $currPerson[$input];
+                }   
+            } 
+        }
+    }
 
-    array_push($jsonArray['person'], $currPerson);
+    var_dump($jsonArray);
 
     $jsonFile = json_encode($jsonArray, JSON_PRETTY_PRINT);
 
     file_put_contents($fileName, $jsonFile);
+
+    return true;
 }
 
 function fillForms() {
