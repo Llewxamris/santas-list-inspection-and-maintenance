@@ -5,15 +5,20 @@ function displayLists(jsonString) {
     let toInsert = "";
     let fName = '';
     let lname = '';
+    let city;
+    let date;
     content.html('<br />');
     $.each(json.person, (index, element) => {
         toInsert = '';
-        fName = '';
-        lName = '';
-        toInsert += '<div value="test" class="person">';
+        fName    = '';
+        lName    = '';
+        city     = '';
+        date     = '';
+
+        toInsert += '<div class="person col-xs-12 col-sm-6">';
         $.each(element, (index, value) => {
             if(index === '-id') {
-                toInsert += `<h3 class='id'>${value}</h3>`;
+                toInsert += `<span class='id'>#${value}</span>`;
             }
             if(index === 'firstName') {
                 fName = value;
@@ -21,11 +26,21 @@ function displayLists(jsonString) {
             if(index === 'lastName') {
                 lName = value;
             }
+            if (index === 'city') {
+                city = value;
+            }
+            if (index === 'dateUpdated') {
+                date = value;
+            }
         });
-        toInsert += fName + ' ' + lName;
+        toInsert += ' ' + fName + ' ' + lName;
+        toInsert += '<div class="hidden-sm hidden-xs">';
+        toInsert += `<br /> ${city}`;
+        toInsert += `<br /> ${date}`;
+        toInsert += '<br />';
         toInsert += '</div>';
         content.append(toInsert);
-        content.append('<br />');
+        // content.append('<br />');
     });
 
 }
@@ -75,11 +90,11 @@ function displaySpecific(jsonString) {
             }
         });
         toInsert += '<div>';
-        toInsert += 'Name: '         + fName + ' ' + lName + '<br />';
-        toInsert += 'Age: '          + age   + '<br />';
-        toInsert += 'City: '         + city  + '<br />';
-        toInsert += 'Details: '      + deta  + '<br />';
-        toInsert += 'Date Updated: ' + date  + '<br />';
+        toInsert += 'Name: <span class="out">'         + fName + ' ' + lName + '</span><br />';
+        toInsert += 'Age: <span class="out">'          + age   + '</span><br />';
+        toInsert += 'City: <span class="out">'         + city  + '</span><br />';
+        toInsert += '<span class="hidden-xs hidden-sm">Details: <span class="out">' + deta  + '</span></span><br />';
+        toInsert += 'Date Updated: <span class="out">' + date  + '</span><br />';
         toInsert += '</div>';
         content.append(toInsert);
     });

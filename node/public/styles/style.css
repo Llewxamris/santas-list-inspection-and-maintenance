@@ -1,8 +1,55 @@
 body {
-    background-image: url("../images/shattered.png");
+}
+
+#header {
+    background-color: #731509;
+    color: #FAFBF7;
+    text-align: center;
+    position: sticky;
+}
+
+#select {
+    background-color: #540F06;
+    color: #FAFBF7;
+    text-align: center;
+    box-shadow: 0 3px 5px grey;
+    position: sticky;
+    /* border-radius: 0 0 5px 5px; */
 }
 
 .person {
-    border: 1px solid black;
+    border: 2px solid #C0C0B0;
     padding-bottom: 10px;
+    color: #468263;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.person .id {
+    font-size: 2em;
+    padding-right: 10px;
+}
+
+#specific {
+    /* border: 1px double green; */
+    padding-top: 10px;
+    box-shadow: 0 3px 5px grey;
+    position: sticky;
+    font-size: 1.5em;
+}
+
+.out {
+    float: right;
+}
+
+.dropdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+select {
+    margin 40px;
+    background-color: #C19469;
+    color: #FAFBF7;
+    text-shadow: 0 1px 2px black;
 }
