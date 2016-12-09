@@ -49,6 +49,86 @@
             "curList": "G",
             "details": "Cutiest boy in the relm",
             "dateUpdated": "Please Fix This"
+        },
+        {
+            "-id": "6",
+            "firstName": "Andrew",
+            "lastName": "Ha",
+            "age": "20",
+            "city": "Aylmer",
+            "curList": "G",
+            "details": "",
+            "dateUpdated": "0909 - 1212 - 2016"
+        },
+        {
+            "-id": "7",
+            "firstName": "Isaac",
+            "lastName": "Haley",
+            "age": "1",
+            "city": "Aylmer",
+            "curList": "G",
+            "details": "Too God damn cute.",
+            "dateUpdated": "0909 - 1212 - 2016"
+        },
+        {
+            "-id": 6,
+            "firstName": "Satan",
+            "lastName": "Smith",
+            "age": "66",
+            "city": "Hell",
+            "curList": "G",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 9,
+            "firstName": "Nicole",
+            "lastName": "St-Onge",
+            "age": "21",
+            "city": "Gatineau",
+            "curList": "G",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 10,
+            "firstName": "d",
+            "lastName": "d",
+            "age": "d",
+            "city": "d",
+            "curList": "U",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 10,
+            "firstName": "d",
+            "lastName": "d",
+            "age": "d",
+            "city": "d",
+            "curList": "U",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 11,
+            "firstName": "d",
+            "lastName": "d",
+            "age": "d",
+            "city": "d",
+            "curList": "U",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 12,
+            "firstName": "Chris",
+            "lastName": "Cool Guy",
+            "age": "11",
+            "city": "The Sun",
+            "curList": "U",
+            "details": "",
+            "dateUpdated": "2016-12-09"
         }
     ]
 }

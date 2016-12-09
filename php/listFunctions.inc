@@ -38,11 +38,11 @@ $values = array(
         $values[$key] = trim($input);
     } 
 
-    if(validateExists($values['personId']) == FALSE) {
-        $errorMessage .= "Personal Identification  is empty. $errorEnding";
-        $values['personalId'] = "";
-        $success = FALSE;
-    }
+    // if(validateExists($values['personId']) == FALSE) {
+    //     $errorMessage .= "Personal Identification  is empty. $errorEnding";
+    //     $values['personalId'] = "";
+    //     $success = FALSE;
+    // }
 
     if(validateExists($values['firstName']) == FALSE) {
         $errorMessage .= "First name is empty. $errorEnding";
@@ -103,20 +103,23 @@ function writeToFile() {
     $fileName = './List/SantaList.json';
     $jsonArray = array();
 
-    $currPerson = array (     '-id'  => trim($_POST['personId']),
+    $currPerson = array (     '-id'  => $values['personId'],
                         'firstName'  => $_POST['firstName'],
                          'lastName'  => $_POST['lastName'],
                               'age'  => $_POST['age'],
                              'city'  => $_POST['city'],
                           'curList'  => $_POST['curList'],
                           'details'  => $_POST['details'],
-                      'dateUpdated'  => date('dd \- mm -\ Y'));
+                      'dateUpdated'  => date('Y-m-d'));
 
     $jsonFile = file_get_contents($fileName);
 
     $jsonArray = json_decode($jsonFile, true);
-
-    // foreach ($jsonArray['person'] as $key) {
+    
+    if ($currPerson['-id'] === '') {
+        $currPerson['-id'] = getNewNumber();
+        addOneToIdList();
+    } 
     //     var_dump($key);
     //     if ($key['-id'] === $currPerson['-id']) {
     //         echo '<br />';
@@ -150,19 +153,6 @@ function writeToFile() {
     file_put_contents($fileName, $jsonFile);
 }
 
-function getIDs() {
-    $idFile = file('./List/idList.txt');
-    $lastID = "";
-
-    foreach ($idFile as $num) {
-        $lastID  = $num;
-        echo "<option name='$num' value='$num''>$num</option>";
-    }
-    $lastID = $lastID + 1;
-    echo "<option name='$lastID' value='$lastID' selected>$lastID</option>";
-
-}
-
 function fillForms() {
     global $values;
     $fileName = './List/SantaList.json';
@@ -183,4 +173,23 @@ function fillForms() {
         }
     }
     return $found;
+}
+
+function getNewNumber() {
+    $jsonArray = json_decode(file_get_contents('./List/idList.json'), true);
+    $largestNumber = 0;
+
+    foreach ($jsonArray as $number) {
+        if ($number > $largestNumber) {
+            $largestNumber = $number;
+        } 
+    }    
+
+    return $largestNumber + 1;
+}
+
+function addOneToIdList() {
+    $jsonArray = json_decode(file_get_contents('./List/idList.json'));
+    array_push($jsonArray, getNewNumber());
+    file_put_contents('./List/idList.json', json_encode($jsonArray));
 }
