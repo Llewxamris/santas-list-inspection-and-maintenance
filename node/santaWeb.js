@@ -33,7 +33,7 @@ HTTP.createServer(function(req, res) {
     if (querystring.match(/which/)) {
         let qsObject = URL.parse(req.url, true).query.which;
         let options  = { 
-            url     : 'http://csdev.cegep-heritage.qc.ca/students/1240428/mHaley_C30_A04/php/getListInfo.php',
+            url     : 'page no longer exists',
             method  : 'GET',
             qs      : {
                 "which" : qsObject
@@ -50,7 +50,7 @@ HTTP.createServer(function(req, res) {
     } else if(querystring.match(/id/)) {
         let qsObject = URL.parse(req.url, true).query.id;
         let options  = {
-            url     : 'http://csdev.cegep-heritage.qc.ca/students/1240428/mHaley_C30_A04/php/getDetailInfo.php',
+            url     : 'page no longer exists',
             method  : 'GET',
             qs      : {
                 "id" : qsObject
