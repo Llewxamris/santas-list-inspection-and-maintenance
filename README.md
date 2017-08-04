@@ -1,3 +1,5 @@
+# NOTE: THIS REPO IS NOT RECIEVING ANY FIXES FOR THE TIME BEING
+
 # Santa's List Inspection and Maintenance (SLIM)
 A bug tracking service reskinned to be Santa's digital naughty and nice list.
 For 420-C30.
