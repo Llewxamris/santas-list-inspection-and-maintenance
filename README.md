@@ -1,5 +1,3 @@
-# NOTE: THIS REPO IS NOT RECIEVING ANY FIXES FOR THE TIME BEING
-
 # Santa's List Inspection and Maintenance (SLIM)
 A bug tracking service reskinned to be Santa's digital naughty and nice list.
 For 420-C30.
@@ -21,6 +19,9 @@ to type).
 Santa is accessing a node.js web server for all his web needs. His
 “dashboard" must update automatically every 30 seconds to display the current
 good girls and boys.
+
+**This project is currently being rewritten to use Express, and rebranded to be
+a bugtracking application.
 
 # Dependencies
 Node.js server requires Chalk v.1.1.3, and Request 2.79.0. Newer versions may
