@@ -15,6 +15,7 @@
   "homepage": "https://github.com/Llewxamris/santas-list-inspection-and-maintenance#readme",
   "dependencies": {
     "chalk": "1.1.3",
+    "express": "^4.15.3",
     "request": "2.79.0"
   }
 }
