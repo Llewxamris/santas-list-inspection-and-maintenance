@@ -2,7 +2,7 @@
   "name": "santas-list-inspection-and-maintenace",
   "version": "1.0.0",
   "description": "A web server that handles serving pages to Santa and Mrs. Claus, and calling a PHP application to deliver the Naughty/Nice list.",
-  "main": "santaWeb.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Llewxamris/santas-list-inspection-and-maintenance.git"
