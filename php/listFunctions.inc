@@ -20,6 +20,7 @@ $values = array(
     global $errorMessage; 
     global $values;
 
+    // Get user input and add it to the values array.
     $values = array(
                     "personId"  => $_POST['personId'],
                     "firstName" => $_POST['firstName'],
@@ -36,38 +37,44 @@ $values = array(
     foreach($values as $key => $input) {
         // Trims each value
         $values[$key] = trim($input);
+    }
+
+    if($values['personId'] !== '') {
+        // If the personId is not new...
+        if(!validateNumExists($values['personId'])) {
+            // ...and if the number entered does not exist
+            $errorMessage .= 'Personal ID does not exist. To create a new user, leave the Personal ID empty. <br />';
+            $success = false;
+        }
     } 
 
-    // if(validateExists($values['personId']) == FALSE) {
-    //     $errorMessage .= "Personal Identification  is empty. $errorEnding";
-    //     $values['personalId'] = "";
-    //     $success = FALSE;
-    // }
-
-    if(validateExists($values['firstName']) == FALSE) {
-        $errorMessage .= "First name is empty. $errorEnding";
-        $values['firstName'] = "";
-        $success = FALSE;
+    // Validates if all other fields exist
+    if (!validateExists($values['firstName'])) {
+        $errorMessage .= 'First name is empty.' . $errorEnding;
+        $values['firstName'] = '';
+        $success = false;
     }
 
-    if(validateExists($values['lastName']) == FALSE) {
-        $errorMessage .= "Last name is empty." . $errorEnding; 
-        $values['lastName'] = "";
-        $success = FALSE;
+    if (!validateExists($values['lastName'])) {
+        $errorMessage .= 'Last name is empty.' . $errorEnding; 
+        $values['lastName'] = '';
+        $success = false;
     }
 
-    if(validateExists($values['age']) == FALSE) {
-        $errorMessage .= "Age is empty." . $errorEnding; 
-        $success = FALSE;
-        $values['age'] = "";
+    if (!validateExists($values['age'])) {
+        $errorMessage .= 'Age is empty.' . $errorEnding; 
+        $success = false;
+        $values['age'] = '';
     }
 
-     if(validateExists($values['city']) == FALSE) {
-         $errorMessage .= "City is empty." . $errorEnding;
-         $success = FALSE;
-         $values['city'] = "";
+     if (!validateExists($values['city'])) {
+         $errorMessage .= 'City is empty.' . $errorEnding;
+         $success = false;
+         $values['city'] = '';
      }
-
+    
+     // If there were no issues, write to the file
+     // Else, return the fail
      if ($success) {
         writeToFile();
         return $success; 
@@ -89,8 +96,8 @@ function validateExists($data) {
 function hasError($data) {
     // Determins if the data had an error or not.
     global $values;
-    if($data == "") {
-        return "error";
+    if($data == '') {
+        return 'error';
     } else {
         return "";
     }
@@ -102,7 +109,6 @@ function writeToFile() {
     $foundReplace = false;
     $fileName = './List/SantaList.json';
     $jsonArray = array();
-
     $currPerson = array (     '-id'  => $values['personId'],
                         'firstName'  => $_POST['firstName'],
                          'lastName'  => $_POST['lastName'],
@@ -113,14 +119,17 @@ function writeToFile() {
                       'dateUpdated'  => date('Y-m-d'));
 
     $jsonFile = file_get_contents($fileName);
-
     $jsonArray = json_decode($jsonFile, true);
     
     if ($currPerson['-id'] === '') {
+        // If the user has not entered an id...
+        // ...creates a new id, and increments
+        // the id file
         $currPerson['-id'] = getNewNumber();
         addOneToIdList();
         array_push($jsonArray['person'], $currPerson);
     } else { 
+        // Update the User
         foreach ($jsonArray['person'] as &$key) {
             if ($key['-id'] === $currPerson['-id']) {
                 foreach ($key as $input => &$output) {
@@ -130,16 +139,15 @@ function writeToFile() {
         }
     }
 
-    var_dump($jsonArray);
 
     $jsonFile = json_encode($jsonArray, JSON_PRETTY_PRINT);
-
     file_put_contents($fileName, $jsonFile);
 
     return true;
 }
 
 function fillForms() {
+    // Sets all the values in the form to previously entered values
     global $values;
     $fileName = './List/SantaList.json';
     $jsonFile = file_get_contents($fileName);
@@ -154,14 +162,27 @@ function fillForms() {
                             "lastName"  => $value['lastName'],
                             "age"       => $value['age'],
                             "curList"   => $value['curList'],
-                            "city"      => $value['city'],
+                           "city"      => $value['city'],
                             "details"   => $value['details']);
         }
     }
     return $found;
 }
 
+function validateNumExists($inputId) {
+    // Searched through the idList, and checks if the number does not exists
+    $jsonArray = json_decode(file_get_contents('./List/idList.json'), true);
+
+    foreach ($jsonArray as $number) {
+        if ($number === $inputId) {
+            return true;
+        }
+    }
+    return false;
+}
+
 function getNewNumber() {
+    // Finds the largest number, and adds 1, then returns that new number;
     $jsonArray = json_decode(file_get_contents('./List/idList.json'), true);
     $largestNumber = 0;
 
@@ -175,6 +196,7 @@ function getNewNumber() {
 }
 
 function addOneToIdList() {
+    // Adds a new number to the list that is one larger than the largest number
     $jsonArray = json_decode(file_get_contents('./List/idList.json'));
     array_push($jsonArray, getNewNumber());
     file_put_contents('./List/idList.json', json_encode($jsonArray));

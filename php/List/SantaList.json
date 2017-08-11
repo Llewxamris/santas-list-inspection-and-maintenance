@@ -8,7 +8,7 @@
             "city": "Aylmer",
             "curList": "G",
             "details": "",
-            "dateUpdated": "111111"
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "2",
@@ -18,17 +18,17 @@
             "city": "Ottawa",
             "curList": "N",
             "details": "",
-            "dateUpdated": "111111"
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "3",
             "firstName": "John",
             "lastName": "Doe",
-            "age": "53",
+            "age": "43",
             "city": "London",
-            "curList": "L",
+            "curList": "G",
             "details": "",
-            "dateUpdated": "0404 - 1212 - 2016"
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "4",
@@ -38,7 +38,7 @@
             "city": "The Square",
             "curList": "U",
             "details": "Like a Rock.",
-            "dateUpdated": "0404 - 1212 - 2016"
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "5",
@@ -58,7 +58,7 @@
             "city": "Aylmer",
             "curList": "G",
             "details": "",
-            "dateUpdated": "0909 - 1212 - 2016"
+            "dateUpdated": "2016-12-09"
         },
         {
             "-id": "7",
@@ -68,16 +68,6 @@
             "city": "Aylmer",
             "curList": "G",
             "details": "Too God damn cute.",
-            "dateUpdated": "0909 - 1212 - 2016"
-        },
-        {
-            "-id": 6,
-            "firstName": "Satan",
-            "lastName": "Smith",
-            "age": "66",
-            "city": "Hell",
-            "curList": "G",
-            "details": "",
             "dateUpdated": "2016-12-09"
         },
         {
@@ -92,31 +82,21 @@
         },
         {
             "-id": 10,
-            "firstName": "d",
-            "lastName": "d",
-            "age": "d",
-            "city": "d",
+            "firstName": "Andrew",
+            "lastName": "Ha",
+            "age": "20",
+            "city": "Vancouver",
             "curList": "U",
-            "details": "",
-            "dateUpdated": "2016-12-09"
-        },
-        {
-            "-id": 10,
-            "firstName": "d",
-            "lastName": "d",
-            "age": "d",
-            "city": "d",
-            "curList": "U",
-            "details": "",
+            "details": "Fights terrorists.",
             "dateUpdated": "2016-12-09"
         },
         {
             "-id": 11,
-            "firstName": "d",
-            "lastName": "d",
-            "age": "d",
-            "city": "d",
-            "curList": "U",
+            "firstName": "Amri",
+            "lastName": "Loolapalozoa",
+            "age": "48",
+            "city": "Ottawa",
+            "curList": "L",
             "details": "",
             "dateUpdated": "2016-12-09"
         },
@@ -127,6 +107,16 @@
             "age": "11",
             "city": "The Sun",
             "curList": "U",
+            "details": "",
+            "dateUpdated": "2016-12-09"
+        },
+        {
+            "-id": 13,
+            "firstName": "Captain",
+            "lastName": "Planet",
+            "age": "60",
+            "city": "Earth",
+            "curList": "G",
             "details": "",
             "dateUpdated": "2016-12-09"
         }

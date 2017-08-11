@@ -1,57 +1,32 @@
 <!DOCTYPE html>
-<html lang="en_CA">
-
+<html lang="en">
 <head>
-
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
-        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/style.css" />
-
-    <title>SLIM - Santa's Naughty/Nice List</title>
-
+<meta charset="utf-8" />
+<title>Santa's Home Page</title>
+<link href="styles/santa.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
+<div id="container">
+  <header>
+    <h1>Santa's Ho Ho Home Page</h1>
+	<img src="./images/merrychristmas.png" alt="Merry Christmas" width="80%"/>
+  </header>
+  <ul>
+  	<li class="navlist"><a href="index.html">Home</a></li>
+    <li class="navlist"><a href="mylist.html">Checking the List</a></li>
+    <li class="navlist"><a href="http://www.christmastime.com" target="_blank">Christmas</a></li>
+  </ul>
+  <img src="./images/rudolph.jpg" alt="So funny" width="45%" />
+  <img src="./images/minions.jpg" alt="So funny" width="45%" /><br/>
+  <img src="./images/lights.gif" alt="So funny" width="45%" />
+  <img src="./images/lights2.gif" alt="So funny" width="45%" /><br/><br/><br/>
+  <img src="./images/christmastree.svg" alt="So funny" width="45%" />
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="hidden-md hidden-lg col-xs-12" id="header">
-                <h1>S.L.I.M.</h1>
-            </div>
-            <div class="hidden-xs hidden-sm col-xs-12" id="header">
-                <h1>Santa's List Inspection and Maintenance</h1>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12" id="select">
-                <form>
-                    <select class="dropdown">
-                        <option value="N">Naughty</option>
-                        <option value="G">Nice</option>
-                        <option value="L">Limbo</option>
-                        <option value="U">Unknown</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12" id="specific">
-            </div>
-        </div>
-        <div class="row" id="content">
-        </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-            crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" 
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" 
-            crossorigin="anonymous"></script>
-    <script src="./javascript/scripts.js"></script>
+  <footer>
+    Copyright 2016<br />
+    SLIM Inc
+  </footer>
+</div>
 </body>
-
 </html>

@@ -88,7 +88,8 @@
 <?php
     
     } else {
-        echo "<p>Human added to Santa's List</p>";
+        echo $values['firstName'] . ' ' . $values['lastName'] . ' has been added to the list.<br />';
+        echo '<a href="./manageList.php">Return to form</a>';
     }
 ?>
 

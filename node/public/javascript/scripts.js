@@ -40,15 +40,12 @@ function displayLists(jsonString) {
         toInsert += '<br />';
         toInsert += '</div>';
         content.append(toInsert);
-        // content.append('<br />');
     });
 
 }
 
 function displaySpecific(jsonString) {
-    console.log(jsonString);
-    let fuck = '{ "person": [{"-id": "3","firstName": "John","lastName": "Doe","age": "53","city": "London","curList": "L","details": "","dateUpdated": "0404 - 1212 - 2016"}]}';
-    let json     = JSON.parse(fuck);
+    let json     = JSON.parse(jsonString);
     let content  = $('#specific');
     let toInsert = '';
     let id;
@@ -100,26 +97,16 @@ function displaySpecific(jsonString) {
     });
 }
 
-// $(document).on('click', '.dropdown-menu li a', function() {
-//     let listName = $(this).text().trim().substring(0,1);
-//     console.log('lol');
-//     $.get('/', { "which": listName }, function (data) {
-//         console.log(data);
-//         $('#content').append(data);
-//         console.log('lol');
-//     });
-// });
-
 $(document).on('click', '.dropdown', (e) => {
     let listName = e.target.value;
 
     $.get('/', { which: listName },  (data) => {
-        displayLists(data);
+        setInterval(displayLists(data), 30000);
     });
 });
 
 $(document).on('click', '.person .id',  (e) => {
-    let personId = $(e.target).text();
+    let personId = $(e.target).text().substring(1);
 
     $.get('/', { "id": personId }, (data) => {
         displaySpecific(data);
